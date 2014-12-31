@@ -1,4 +1,4 @@
 #search_field{width: 100%;}
 #result{border: 2px solid black;width: 100%;}
-#result div{}
-#result div:hover{background-color: blue;color: white;}
+#result div:hover{background-color: blue;color: white;cursor:pointer;}
+.select{background-color: blue;color: white;}

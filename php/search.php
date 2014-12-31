@@ -5,7 +5,7 @@ if(!isset($_POST["search"])||trim($_POST["search"])=="")
 	exit;
 }
 
-$sql=utf8_decode("SELECT City.Name as city,Country.Name as country  FROM city JOIN country on CountryCode=Code where city.Name LIKE \"%".htmlspecialchars(trim($_POST["search"]),ENT_QUOTES,"UTF-8")."%\"");
+$sql="SELECT City.Name as city,Country.Name as country  FROM city JOIN country on CountryCode=Code where city.Name LIKE \"%".utf8_decode(htmlspecialchars(trim($_POST["search"]),ENT_QUOTES,"UTF-8"))."%\"";
 
 $response=$base->query($sql)or die(print_r($base->errorInfo()));
 
