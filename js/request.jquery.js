@@ -62,6 +62,7 @@ $("#search_field").keyup(
 					$(".select").removeClass("select");
 					$(".hover").removeClass("hover");
 					$(this).addClass("hover");
+					index = $(this).index();
 				});
                                         
             }
