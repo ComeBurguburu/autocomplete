@@ -1,7 +1,5 @@
 /*global $, jQuery, console */
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 (function ($) {
 	"use strict";
 
@@ -9,39 +7,6 @@
 		UP = 38,
 		ENTER = 13;
 		
-=======
-$(document).keydown(function (event) {
-=======
-$("#search_field").keydown(function (event) {
->>>>>>> parent of 9785004... Revert "1.4"
-    
-    if (event.which === UP) {
-        index -= 1;
-    }
-    if (event.which === DOWN) {
-        index += 1;
-    }
-    
-    if (index < 0) {
-        index = 0;
-    }
-    
-    if (event.which === ENTER) {
-        if ($(".select:first").html() !== "") {
-            $("#search_field").val($(".select:first").html());
-        } else {
-			if ($(".hover:first").html() !== "") {
-				$("#search_field").val($(".hover:first").html());
-			}
-		}
-        
-        $("#result").html("");
-        oldValue = $("#search_field").val();
-    }
-    
-    $("#result").off("mouseover");
-	$(".hover").removeClass("hover");
->>>>>>> parent of c30daa3... 1.4
 
 	$.fn.autocomplete = function (options) {
 	
