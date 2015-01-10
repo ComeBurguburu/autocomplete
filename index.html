@@ -19,7 +19,9 @@
 		</div>
 		  <!-- JavaScript -->
 		<script type="text/javascript">
-		$("#search_field").autocomplete();
+		var f = function(a){
+		alert(a);}
+		$("#search_field").autocomplete({callback: f,autohide: true});
 		</script>
 	</body>
 </html>

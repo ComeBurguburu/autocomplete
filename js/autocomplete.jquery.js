@@ -35,6 +35,7 @@
 		if (search_field.next().length === 0 || search_field.next()[0].tagName.toLowerCase() !== "span" || search_field.next().eq(0).html() !== "x") {
 			search_field.after(result).after(clear);
 		}
+		if (settings.autohide) {$(result).hide(); }
 
 		$(this).keydown(function (event) {
 			
@@ -86,7 +87,7 @@
 		
 		$(this).keyup(
 			function () {
-				
+				if (settings.autohide) {$(result).hide(); }
 				if (search_field.val() === oldValue) {
 					return;
 				}
