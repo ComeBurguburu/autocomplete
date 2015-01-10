@@ -130,7 +130,7 @@
 			}
 		);
 		
-		
+		$(this).blur(function () {$(result).hide(); });
 		
 		$(clear).click(function () {
 			search_field.val(null);
