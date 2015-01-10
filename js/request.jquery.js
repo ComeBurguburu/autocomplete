@@ -6,7 +6,7 @@ var index = 0;
 var oldValue = "";
 var all = 0;
 
-$("#search_field").keydown(function (event) {
+$(document).keydown(function (event) {
     
     if (event.which === UP) {
         index -= 1;
