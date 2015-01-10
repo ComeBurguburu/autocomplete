@@ -87,7 +87,7 @@
 		
 		$(this).keyup(
 			function () {
-				
+				if (settings.autohide) {$(result).hide(); }
 				if (search_field.val() === oldValue) {
 					return;
 				}
