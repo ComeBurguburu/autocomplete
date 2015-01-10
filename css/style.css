@@ -1,4 +1,8 @@
-#search_field{width: 100%;}
-#result{border: 2px solid black;width: 100%;}
+#search_field{width: 90%;}
+#result{border: 1px solid black;width: 90%;}
 .hover{background-color: blue;color: white;cursor:pointer;}
 .select{background-color: blue;color: white;}
+#clear{cursor: pointer;position: relative;top: 0;right: 15px;}
+#search_field::-ms-clear { display: none; }
+/*#clear:hover{color: blue;}*/
+#content{width: 40%;}

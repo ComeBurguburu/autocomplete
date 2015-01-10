@@ -71,3 +71,7 @@ $("#search_field").keyup(
         ).fail(function () {window.alert('erreur'); });
     }
 );
+$("#clear").click(function () {
+	$("#search_field").val(null);
+	$("#result").html("");
+});
