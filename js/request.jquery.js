@@ -1,6 +1,7 @@
 /*global $, jQuery, console */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 (function ($) {
 	"use strict";
 
@@ -10,6 +11,9 @@
 		
 =======
 $(document).keydown(function (event) {
+=======
+$("#search_field").keydown(function (event) {
+>>>>>>> parent of 9785004... Revert "1.4"
     
     if (event.which === UP) {
         index -= 1;
