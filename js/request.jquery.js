@@ -22,9 +22,11 @@ $(document).keydown(function (event) {
     if (event.which === ENTER) {
         if ($(".select:first").html() !== "") {
             $("#search_field").val($(".select:first").html());
-			$(".hover").removeClass("hover");
-
-        }
+        } else {
+			if ($(".hover:first").html() !== "") {
+				$("#search_field").val($(".hover:first").html());
+			}
+		}
         
         $("#result").html("");
         oldValue = $("#search_field").val();
@@ -56,7 +58,7 @@ $("#search_field").keyup(
 				$(".hover").removeClass("hover");
 
 				$("#result div").eq(index).addClass("select");
-				$("#result div").on("click", null, function () {$("#search_field").val($(this).html()); });
+				$("#result div").on("click", null, function () {$("#search_field").val($(this).html()); $("#result").html(""); });
 				$("#result div").on("mouseout", null, function () {$(this).removeClass("select hover"); });
 				$("#result div").on("mouseover", function () {
 					$(".select").removeClass("select");
