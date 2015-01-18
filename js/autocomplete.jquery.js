@@ -56,19 +56,9 @@
 				if (event.which === ENTER) {
 
 					if ($("." + settings.className).first().html() !== "") {
-						search_field.val($("." + settings.className).first().html());
+						search_field.val($("." + settings.className).first().find("span").text());
 						if (settings.callback !== null) {
-							settings.callback($("." + settings.className).first().html());
-						}
-					} else {
-
-						if ($("." + settings.className).first().html() !== "") {
-							search_field.val($("." + settings.className).first().html());
-
-							if (settings.callback !== null) {
-								settings.callback($("." + settings.className).first().html());
-							}
-
+							settings.callback($("." + settings.className).first().find("span").text());
 						}
 					}
 
@@ -108,10 +98,10 @@
 							$(result).find("div").eq(index).addClass(settings.className);
 							$(result).find("div").on("click", null,
 													 function () {
-									search_field.val($(this).html());
+									search_field.val($(this).find("span").text());
 
 									if (settings.callback !== null) {
-										settings.callback($(this).html());
+										settings.callback($(this).find("span").text());
 									}
 									if (settings.autohide) {$(result).hide(); }
 									$(result).html("");
@@ -133,7 +123,11 @@
 				}
 			);
 
-			$(this).blur(function () {$(result).hide(); });
+			$(this).blur(function () {
+				if ($(result).find("." + settings.className).length === 0) {
+					$(result).hide();
+				}
+			});
 
 			$(clear).click(function () {
 				search_field.val(null);
