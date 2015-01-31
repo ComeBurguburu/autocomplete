@@ -30,7 +30,7 @@ Copyright (c) 2015-2042
 			// This is the easiest way to have default options.
 			var settings = $.extend({
 				link: "php/search.php",
-				autohide: false,
+				autohide: true,
 				callback: null,
 				className: "select-autocomplete",
 				dataSelector: "span",
