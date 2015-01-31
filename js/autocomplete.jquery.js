@@ -1,3 +1,12 @@
+/*!
+Autocomplete a input Ajax wrapper for jQuery 
+by Côme BURGUBURU
+
+Version 1.8.0
+Full source at https://github.com/ComeBurguburu/autocomplete
+Copyright (c) 2015-2042
+
+*/
 /*global $, jQuery, console */
 
 (function ($) {
@@ -40,9 +49,12 @@
 			data.show_all = settings.show_all;
 			data.max_values = settings.max_values;
 
-			$(result).css({border: "1px solid black", width: "90%" });
+			$(result).css({border: "1px solid black", width: "90.5%" });
 			search_field.css("width", "90%");
-
+			
+			$(this).wrap("<div></div>");
+			$(this).parent().addClass("autocomplete-wrapper");
+			
 			if (search_field.next().length === 0 || search_field.next()[0].tagName.toLowerCase() !== "span" || search_field.next().eq(0).html() !== "x") {
 				search_field.after(result).after(clear);
 			}
@@ -71,11 +83,11 @@
 					if ($("." + settings.className).first().html() !== "") {
 						search_field.val($("." + settings.className).first().find(settings.dataSelector).text());
 						if (settings.callback !== null) {
-							settings.callback($("." + settings.className).first().find(settings.dataSelector).text(), $(this).next().next().next());
+							settings.callback($("." + settings.className).first().find(settings.dataSelector).text(), $(this).parent());
 						}
 					}
 
-					$(result).html("");
+					$(result).empty();
 
 					if (settings.autohide) {
 						$(result).hide();
@@ -105,7 +117,7 @@
 						settings.link,
 						data,
 						function (response) {
-							if (response === "") {
+							if (response === "" && search_field.val() !== "") {
 								$(result).html("<i>" + settings.no_result + "</li>").show();
 								return;
 							}
@@ -114,15 +126,15 @@
 							$("." + settings.className).removeClass(settings.className);
 
 							$(result).find("div").eq(index).addClass(settings.className);
-							$(result).find("div").on("click", null,
+							$(result).find("div").on("click",
 													 function () {
 									search_field.val($(this).find(settings.dataSelector).text());
 
 									if (settings.callback !== null) {
-										settings.callback($(this).find(settings.dataSelector).text(), $(this).next().next().next());
+										settings.callback($(this).find(settings.dataSelector).text(), $(this).parent());
 									}
 									if (settings.autohide) {$(result).hide(); }
-									$(result).html("");
+									$(result).empty();
 								});
 
 							$(result).find("div").on("mouseout", null,
@@ -155,8 +167,8 @@
 			});
 
 			$(clear).click(function () {
-				search_field.val(null);
-				$(result).html("");
+				search_field.val(null).focus();
+				$(result).empty();
 				if (settings.autohide) {
 					$(result).hide();
 				}
