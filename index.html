@@ -36,10 +36,10 @@
 <div id="content">
 <h2>Simple example</h2>
 			<input type="text"  class="search_field" placeholder="choice city" autofocus/>
-<!--<hr/>
+<hr/>
 <h2>With show_all=true :</h2>
 			<input type="text"  class="search_field" placeholder="choice city" />
-		</div>-->
+		</div>
 		  <!-- JavaScript -->
 		<script type="text/javascript">
 		var f = function(a,b){
@@ -47,7 +47,7 @@
 		$(b).next(".autocomplete-wrapper").find("input").focus();
 		}
 		$(".search_field").eq(0).autocomplete({link:"http://come.burguburu.free.fr/projet/ajax/search/php/search.php", callback: f});
-		$(".search_field").eq(1).autocomplete({link:"http://come.burguburu.free.fr/projet/ajax/search/php/search.php", callback: f, show_all:true, max_values: 5});
+		$(".search_field").eq(1).autocomplete({link:"http://come.burguburu.free.fr/projet/ajax/search/php/search.php", callback: f, show_all: true, max_values: 5});
 		</script>
   </section>
       <footer>
