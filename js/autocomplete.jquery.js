@@ -23,14 +23,22 @@
 				link: "php/search.php",
 				autohide: false,
 				callback: null,
-				className: "select-autocomplete"
+				className: "select-autocomplete",
+				dataSelector: "span",
+				show_all: false,
+				max_values: 10,
+				param_name: "search",
+				no_result: "no result"
 			}, options),
 				search_field = $(this),
 				index = 0,
 				oldValue = "",
 				all = 0,
 				result = document.createElement("div"),
-				clear = $(document.createElement("span")).text("x").css({cursor: "pointer", position: "relative", top: 0, right: "15px"});
+				clear = $(document.createElement("span")).text("x").css({cursor: "pointer", position: "relative", top: 0, right: "15px"}),
+				data = {};
+			data.show_all = settings.show_all;
+			data.max_values = settings.max_values;
 
 			$(result).css({border: "1px solid black", width: "90%" });
 			search_field.css("width", "90%");
@@ -39,7 +47,12 @@
 				search_field.after(result).after(clear);
 			}
 			if (settings.autohide) {$(result).hide(); }
-
+			
+			if ($(this).prop("autofocus")) {
+				oldValue = null;
+				search_field.trigger("keyup");
+			}
+			
 			$(this).keydown(function (event) {
 
 				if (event.which === UP) {
@@ -56,9 +69,9 @@
 				if (event.which === ENTER) {
 
 					if ($("." + settings.className).first().html() !== "") {
-						search_field.val($("." + settings.className).first().find("span").text());
+						search_field.val($("." + settings.className).first().find(settings.dataSelector).text());
 						if (settings.callback !== null) {
-							settings.callback($("." + settings.className).first().find("span").text());
+							settings.callback($("." + settings.className).first().find(settings.dataSelector).text(), $(this).next().next().next());
 						}
 					}
 
@@ -84,13 +97,18 @@
 					if (search_field.val() === oldValue) {
 						return;
 					}
-
+					
+					data[settings.param_name] = search_field.val();
 					oldValue = search_field.val();
-
+					
 					$.post(
 						settings.link,
-						{search: search_field.val()},
+						data,
 						function (response) {
+							if (response === "") {
+								$(result).html("<i>" + settings.no_result + "</li>").show();
+								return;
+							}
 							$(result).html(response).show();
 							all = $(result).find("div").length;
 							$("." + settings.className).removeClass(settings.className);
@@ -98,10 +116,10 @@
 							$(result).find("div").eq(index).addClass(settings.className);
 							$(result).find("div").on("click", null,
 													 function () {
-									search_field.val($(this).find("span").text());
+									search_field.val($(this).find(settings.dataSelector).text());
 
 									if (settings.callback !== null) {
-										settings.callback($(this).find("span").text());
+										settings.callback($(this).find(settings.dataSelector).text(), $(this).next().next().next());
 									}
 									if (settings.autohide) {$(result).hide(); }
 									$(result).html("");
@@ -126,6 +144,13 @@
 			$(this).blur(function () {
 				if ($(result).find("." + settings.className).length === 0) {
 					$(result).hide();
+				}
+			});
+			
+			$(this).focus(function () {
+				if (settings.show_all === true && search_field.val() === "") {
+					oldValue = null;
+					search_field.trigger("keyup");
 				}
 			});
 
