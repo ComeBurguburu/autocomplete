@@ -53,12 +53,13 @@ Copyright (c) 2015-2042
 			search_field.width("90%");
 			search_field.height("30px");
 			
-			$(this).wrap("<div></div>");
-			$(this).parent().addClass("autocomplete-wrapper");
 			
-			if (search_field.next().length === 0 || search_field.next()[0].tagName.toLowerCase() !== "span" || search_field.next().eq(0).html() !== "x") {
+			if (search_field.parent().prop("class") !== "autocomplete-wrapper") {
+				$(this).wrap("<div></div>");
+				$(this).parent().addClass("autocomplete-wrapper");
 				search_field.after(result).after(clear);
 			}
+			
 			if (settings.autohide) {$(result).hide(); }
 			
 			if ($(this).prop("autofocus")) {

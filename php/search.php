@@ -6,12 +6,14 @@ if(!isset($_REQUEST["search"]))
 }
 if(trim($_REQUEST["search"])==""){
 	if(!(isset($_REQUEST["show_all"]) && $_REQUEST["show_all"]=="true")){
-	exit;
+	die("");
 	}
 }
 
 $sql="SELECT city.Name as city,country.Name as country  FROM city JOIN country on CountryCode=Code WHERE city.Name LIKE \"%".utf8_decode(htmlspecialchars(trim($_REQUEST["search"]),ENT_QUOTES,"UTF-8"))."%\"";
-
+if(isset($_GET["debug"])){
+	echo $sql;
+}
 $response=$base->query($sql)or die(print_r($base->errorInfo()));
 
 
