@@ -23,8 +23,9 @@
 		var f = function(a,b){
 		alert(a);
 		$(b).next(".autocomplete-wrapper").find("input").focus();
+		console.log(	$(b).html());
 		}
-		$(".search_field").autocomplete({callback: f,autohide: true});
+		$(".search_field").autocomplete({callback: f,autohide: true,show_all:true, max_values: 5});
 		</script>
 	</body>
 </html>
