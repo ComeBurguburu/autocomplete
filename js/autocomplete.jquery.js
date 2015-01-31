@@ -83,7 +83,7 @@ Copyright (c) 2015-2042
 					if ($("." + settings.className).first().html() !== "") {
 						search_field.val($("." + settings.className).first().find(settings.dataSelector).text());
 						if (settings.callback !== null) {
-							settings.callback($("." + settings.className).first().find(settings.dataSelector).text(), search_field.parent());
+							settings.callback($("." + settings.className).first().find(settings.dataSelector).text(), $(this).parent());
 						}
 					}
 
@@ -131,7 +131,7 @@ Copyright (c) 2015-2042
 									search_field.val($(this).find(settings.dataSelector).text());
 
 									if (settings.callback !== null) {
-										settings.callback($(this).find(settings.dataSelector).text(), search_field.parent());
+										settings.callback($(this).find(settings.dataSelector).text(), $(this).parent());
 									}
 									if (settings.autohide) {$(result).hide(); }
 									$(result).empty();
