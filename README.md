@@ -13,7 +13,7 @@ You can use options :
 <tr><td> link </td><td>link to the script<br/>which make the request </td><td>php/search.php</td></tr>
 <tr><td>param_name</td><td> the GET or POST parameter use by the PHP script</td><td>search</td></tr>
 <tr><td>autohide</td><td>boolean hide result when empty(true to debug css)</td><td> false</td></tr>
-<tr><td>show_all<td><td>boolean display all values on focus </td><td>false</td></tr>
+<tr><td>show_all</td><td>boolean display all values on focus </td><td>false</td></tr>
 <tr><td>callback</td><td>a pointer to a function<br/>first parameter is the result</td><td>null</td></tr>
 <tr><td>className</td><td>the class name when element is highlighted (without dot)</td><td> select-autocomplete <br/>(defined in style.autocomplete.css)</td></tr>
 <tr><td>dataSelector</td><td>css selector where the value return is contained<br/>to use a value different than the text display add display:none to this selector <td>span</td></tr>
