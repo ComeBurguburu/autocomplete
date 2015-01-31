@@ -131,7 +131,7 @@ Copyright (c) 2015-2042
 									search_field.val($(this).find(settings.dataSelector).text());
 
 									if (settings.callback !== null) {
-										settings.callback($(this).find(settings.dataSelector).text(), $(this).parent());
+										settings.callback($(this).find(settings.dataSelector).text(), search_field.parent());
 									}
 									if (settings.autohide) {$(result).hide(); }
 									$(result).empty();
