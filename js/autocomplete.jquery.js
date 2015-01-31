@@ -50,7 +50,8 @@ Copyright (c) 2015-2042
 			data.max_values = settings.max_values;
 
 			$(result).css({border: "1px solid black", width: "90.5%" });
-			search_field.css("width", "90%");
+			search_field.width("90%");
+			search_field.height("30px");
 			
 			$(this).wrap("<div></div>");
 			$(this).parent().addClass("autocomplete-wrapper");
