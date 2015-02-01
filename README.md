@@ -9,7 +9,7 @@ You can use options :
 
 <table>
 <tr><th>Options </th><th>Value</th><th>Default</th></tr>
-<tr><td> link </td><td>link to the script<br/>which make the request </td><td>php/search.php</td></tr>
+<tr><td> url </td><td>link to the script<br/>which make the request </td><td>php/search.php</td></tr>
 <tr><td>param_name</td><td> the GET or POST parameter use by the PHP script</td><td>search</td></tr>
 <tr><td>autohide</td><td>boolean hide result when empty(true to debug css)</td><td> false</td></tr>
 <tr><td>show_all</td><td>boolean display all values on focus </td><td>false</td></tr>
