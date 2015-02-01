@@ -5,7 +5,7 @@ if(!isset($_REQUEST["search"]))
 	exit;
 }
 if(trim($_REQUEST["search"])==""){
-	if(!(isset($_REQUEST["show_all"]) && $_REQUEST["show_all"]=="true")){
+	if(!(isset($_REQUEST["show_all"]) && $_REQUEST["show_all"]==="true")){
 	die("");
 	}
 }

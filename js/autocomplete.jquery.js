@@ -29,7 +29,7 @@ Copyright (c) 2015-2042
 
 			// This is the easiest way to have default options.
 			var settings = $.extend({
-				link: "php/search.php",
+				url: "php/search.php",
 				autohide: true,
 				callback: null,
 				className: "select-autocomplete",
@@ -37,7 +37,9 @@ Copyright (c) 2015-2042
 				show_all: false,
 				max_values: 10,
 				param_name: "search",
-				no_result: "no result"
+				no_result: "no result",
+				key: null,
+				value: null
 			}, options),
 				search_field = $(this),
 				index = 0,
@@ -48,6 +50,10 @@ Copyright (c) 2015-2042
 				data = {};
 			data.show_all = settings.show_all;
 			data.max_values = settings.max_values;
+			
+			if(settings.key !==  null && settings.value !== null) {
+				data[settings.key] = settings.value;
+			}
 
 			$(result).css({border: "1px solid black", width: "90.5%" });
 			search_field.width("90%");
@@ -116,7 +122,7 @@ Copyright (c) 2015-2042
 					oldValue = search_field.val();
 					
 					$.post(
-						settings.link,
+						settings.url,
 						data,
 						function (response) {
 							if (response === "" && search_field.val() !== "") {
