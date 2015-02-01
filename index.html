@@ -14,6 +14,7 @@
 	<script src="https://rawgithub.com/ComeBurguburu/autocomplete/master/js/jquery.js"></script>
 	<script src="https://rawgithub.com/ComeBurguburu/autocomplete/master/js/autocomplete.jquery.js"></script>
 	<link rel="stylesheet" href="stylesheets/style.autocomplete.css"/>
+	<link rel="stylesheet" href="stylesheets/perso.css"/>
   </head>
   <body>
     <div class="wrapper">
@@ -39,6 +40,11 @@
 <hr/>
 <h2>With show_all=true :</h2>
 			<input type="text"  class="search_field" placeholder="choice city" />
+<hr/>
+<h2>Whith a personalized css Class <u>.select-autocomplete-perso</u></h2>
+				<input type="text"  class="search_field" placeholder="choice city" />
+
+
 		</div>
 		  <!-- JavaScript -->
 		<script type="text/javascript">
@@ -48,6 +54,7 @@
 		}
 		$(".search_field").eq(0).autocomplete({link:"http://come.burguburu.free.fr/projet/ajax/search/php/search.php", callback: f});
 		$(".search_field").eq(1).autocomplete({link:"http://come.burguburu.free.fr/projet/ajax/search/php/search.php", callback: f, show_all: true, max_values: 5});
+		$(".search_field").eq(1).autocomplete({link:"http://come.burguburu.free.fr/projet/ajax/search/php/search.php", className: "select-autocomplete-perso", max_values: 5});
 		</script>
   </section>
       <footer>
