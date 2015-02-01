@@ -56,9 +56,9 @@
 		alert(a);
 		$(b).next(".autocomplete-wrapper").find("input").focus();
 		}
-		$(".search_field").eq(0).autocomplete({link:"http://come.burguburu.free.fr/projet/ajax/search/php/search.php", callback: f});
-		$(".search_field").eq(1).autocomplete({link:"http://come.burguburu.free.fr/projet/ajax/search/php/search.php", callback: f, show_all: true, max_values: 5});
-		$(".search_field").eq(2).autocomplete({link:"http://come.burguburu.free.fr/projet/ajax/search/php/search.php", className: "select-autocomplete-perso", max_values: 5});
+		$(".search_field").eq(0).autocomplete({url:"http://come.burguburu.free.fr/projet/ajax/search/php/search.php", callback: f});
+		$(".search_field").eq(1).autocomplete({url:"http://come.burguburu.free.fr/projet/ajax/search/php/search.php", callback: f, show_all: true, max_values: 5});
+		$(".search_field").eq(2).autocomplete({url:"http://come.burguburu.free.fr/projet/ajax/search/php/search.php", className: "select-autocomplete-perso", max_values: 5});
 		</script>
   </section>
       <footer>
