@@ -18,7 +18,8 @@ You can use options :
 <tr><td>dataSelector</td><td>css selector where the value return is contained<br/>to use a value different than the text display add display:none to this selector <td>span</td></tr>
 <tr><td>max_values</td><td>the maximum number of result display<p>set to <code>null</code> to disable limit (can reduice performance</td><td>10</td></tr>
 <tr><td>no_result</td><td>text display when there are no result</td><td>no result</td></tr>
-</table>
+<tr><td>key</td><td> an array of param</td><td>null</td>>/tr>
+<tr><td>value</td><td> an array of value<p>param1=value1&param2=value2...</p></td><td>null</td></tr></table>
 
 <u>example : </u>
 <pre>
