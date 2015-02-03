@@ -2,7 +2,7 @@
 Autocomplete a input Ajax wrapper for jQuery 
 by Côme BURGUBURU
 
-Version 1.11.0
+Version 1.12.0
 Full source at https://github.com/ComeBurguburu/autocomplete
 Copyright (c) 2015-2042
 
@@ -32,6 +32,7 @@ Copyright (c) 2015-2042
 				url: "php/search.php",
 				autohide: true,
 				callback: null,
+				onclear: null,
 				className: "select-autocomplete",
 				dataSelector: "span",
 				show_all: false,
@@ -180,6 +181,9 @@ Copyright (c) 2015-2042
 				$(result).empty();
 				if (settings.autohide) {
 					$(result).hide();
+					if (settings.onclear !== null) {
+						settings.onclear($(search_field).parent());
+					}
 				}
 			});
 
