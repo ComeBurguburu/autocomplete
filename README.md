@@ -14,6 +14,7 @@ You can use options :
 <tr><td>autohide</td><td>boolean hide result when empty(true to debug css)</td><td> false</td></tr>
 <tr><td>show_all</td><td>boolean display all values on focus </td><td>false</td></tr>
 <tr><td>callback</td><td>a pointer to a function<br/>first parameter is the result<br/>second parameter is a pointer to the  autocomplete wrapper</td><td>null</td></tr>
+<tr><td>onclear</td><td>function call when clear button is pressed</td><td>null</td></tr>
 <tr><td>className</td><td>the class name when element is highlighted (without dot)</td><td> select-autocomplete <br/>(defined in style.autocomplete.css)</td></tr>
 <tr><td>dataSelector</td><td>css selector where the value return is contained<br/>to use a value different than the text display add display:none to this selector <td>span</td></tr>
 <tr><td>max_values</td><td>the maximum number of result display<p>set to <code>null</code> to disable limit (can reduice performance</td><td>10</td></tr>
