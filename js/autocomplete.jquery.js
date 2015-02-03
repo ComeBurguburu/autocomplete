@@ -2,7 +2,7 @@
 Autocomplete a input Ajax wrapper for jQuery 
 by Côme BURGUBURU
 
-Version 1.12.0
+Version 1.13.0
 Full source at https://github.com/ComeBurguburu/autocomplete
 Copyright (c) 2015-2042
 
@@ -53,7 +53,7 @@ Copyright (c) 2015-2042
 			data.show_all = settings.show_all;
 			data.max_values = settings.max_values;
 			
-			if (settings.key !==  null && settings.value !== null && settings.key instanceof Array && settings.value instanceof Array && settings.key.length > 0) {
+			if (settings.key !==  null && settings.value !== null && settings.key instanceof Object && settings.value instanceof Object && settings.key.length > 0) {
 				for (index_param = 0; index_param < Math.min(settings.key.length, settings.value.length); index_param = index_param + 1) {
 					data[settings.key[index_param]] = settings.value[index_param];
 				}
