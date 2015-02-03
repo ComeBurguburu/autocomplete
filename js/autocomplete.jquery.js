@@ -2,7 +2,7 @@
 Autocomplete a input Ajax wrapper for jQuery 
 by Côme BURGUBURU
 
-Version 1.8.0
+Version 1.11.0
 Full source at https://github.com/ComeBurguburu/autocomplete
 Copyright (c) 2015-2042
 
@@ -45,23 +45,24 @@ Copyright (c) 2015-2042
 				index = 0,
 				oldValue = "",
 				all = 0,
-				result = document.createElement("div"),
+				result = $(document.createElement("div")).css({position: "absolute", display: "block", zIndex: "300"}),
 				clear = $(document.createElement("span")).text("x").css({cursor: "pointer", position: "relative", top: 0, right: "15px"}),
-				data = {};
+				data = {},
+				index_param;
 			data.show_all = settings.show_all;
 			data.max_values = settings.max_values;
 			
-			if(settings.key !==  null && settings.value !== null) {
-				data[settings.key] = settings.value;
+			if (settings.key !==  null && settings.value !== null && settings.key instanceof Array && settings.value instanceof Array && settings.key.length > 0) {
+				for (index_param = 0; index_param < Math.min(settings.key.length, settings.value.length); index_param = index_param + 1) {
+					data[settings.key[index_param]] = settings.value[index_param];
+				}
 			}
-
-			$(result).css({border: "1px solid black", width: "90.5%" });
 			search_field.width("90%");
 			search_field.height("30px");
-			
+			$(result).css({border: "1px solid black", width: $(search_field).width() - 5, backgroundColor: "white"});
 			
 			if (search_field.parent().prop("class") !== "autocomplete-wrapper") {
-				$(this).wrap("<div></div>");
+				$(this).wrap("<div></div>").css("position", "relative");
 				$(this).parent().addClass("autocomplete-wrapper");
 				search_field.after(result).after(clear);
 			}
@@ -111,7 +112,7 @@ Copyright (c) 2015-2042
 				$(result).find("div").eq(index % all).addClass(settings.className);
 			});
 
-			$(this).keyup(
+			$(this).on("keyup keypress",
 				function () {
 
 					if (search_field.val() === oldValue) {
@@ -159,7 +160,7 @@ Copyright (c) 2015-2042
 						}
 					);
 				}
-			);
+				);
 
 			$(this).blur(function () {
 				if ($(result).find("." + settings.className).length === 0) {
