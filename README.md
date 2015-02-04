@@ -5,7 +5,7 @@ Autocomplete result when use search bar from database utf-8 support
 
 $(selector).autocomplete();
 
-You can use options :
+You can use options 
 
 <table>
 <tr><th>Options </th><th>Value</th><th>Default</th></tr>
