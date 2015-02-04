@@ -56,7 +56,7 @@ Copyright (c) 2015-2042
 					data[settings.key[index_param]] = settings.value[index_param];
 				}
 			}
-			search_field.width("90%");
+			search_field.width("90.5%");
 			search_field.height("30px");
 			$(result).css({border: "1px solid black", width: $(search_field).width() - 5, backgroundColor: "white"});
 			
@@ -165,6 +165,8 @@ Copyright (c) 2015-2042
 			});
 			
 			$(this).focus(function () {
+				$(result).hide();
+				
 				if (settings.show_all === true && search_field.val() === "") {
 					oldValue = null;
 					search_field.trigger("keyup");
