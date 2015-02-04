@@ -4,7 +4,7 @@ function mkmap($dir){
 	$folder = opendir ($dir);
  
 		if (count(scandir($dir)) <= 2){
-			echo realpath($dir)"/<br/>";
+			echo realpath($dir)."/<br/>";
 		}
  
 		while ($file = readdir ($folder)) {
