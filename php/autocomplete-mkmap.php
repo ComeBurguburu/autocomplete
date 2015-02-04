@@ -1,3 +1,4 @@
+<?php
 function mkmap($dir){
 
 	$folder = opendir ($dir);
@@ -22,3 +23,4 @@ function mkmap($dir){
 }
 
 mkmap("..");
+?>
