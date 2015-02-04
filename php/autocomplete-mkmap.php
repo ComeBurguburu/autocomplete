@@ -1,4 +1,13 @@
 <?php
+/*!
+Autocomplete a input Ajax wrapper for jQuery 
+by Côme BURGUBURU
+
+Version 1.14.0
+Full source at https://github.com/ComeBurguburu/autocomplete
+Copyright (c) 2015-2042
+
+*/
 function mkmap($dir){
 
 	$folder = opendir ($dir);
@@ -21,6 +30,6 @@ function mkmap($dir){
 		}
 	closedir ($folder);
 }
-
-mkmap("..");
+$path="..";
+mkmap($path);
 ?>

@@ -2,7 +2,7 @@
 Autocomplete a input Ajax wrapper for jQuery 
 by Côme BURGUBURU
 
-Version 1.13.0
+Version 1.14.0
 Full source at https://github.com/ComeBurguburu/autocomplete
 Copyright (c) 2015-2042
 
@@ -30,11 +30,9 @@ Copyright (c) 2015-2042
 			// This is the easiest way to have default options.
 			var settings = $.extend({
 				url: "php/search.php",
-				autohide: true,
 				callback: null,
 				onclear: null,
 				className: "select-autocomplete",
-				dataSelector: "span",
 				show_all: false,
 				max_values: 10,
 				param_name: "search",
@@ -68,7 +66,7 @@ Copyright (c) 2015-2042
 				search_field.after(result).after(clear);
 			}
 			
-			if (settings.autohide) {$(result).hide(); }
+			$(result).hide();
 			
 			if ($(this).prop("autofocus")) {
 				oldValue = null;
@@ -79,9 +77,11 @@ Copyright (c) 2015-2042
 
 				if (event.which === UP) {
 					index -= 1;
+					event.preventDefault();
 				}
 				if (event.which === DOWN) {
 					index += 1;
+					event.preventDefault();
 				}
 
 				if (index < 0) {
@@ -91,29 +91,24 @@ Copyright (c) 2015-2042
 				if (event.which === ENTER) {
 
 					if ($("." + settings.className).first().html() !== "") {
-						search_field.val($("." + settings.className).first().find(settings.dataSelector).text());
+						search_field.val($("." + settings.className).first().text());
 						if (settings.callback !== null) {
-							settings.callback($("." + settings.className).first().find(settings.dataSelector).text(), $(this).parent());
+							settings.callback($("." + settings.className).first().text(), $(this).parent());
 						}
 					}
 
 					$(result).empty();
-
-					if (settings.autohide) {
-						$(result).hide();
-					}
-
+					$(result).hide();
+					
 					oldValue = search_field.val();
 				}
 
 				$(result).off("mouseover");
-				$("." + settings.className).removeClass(settings.className);
-
 				$(result).find("div").removeClass(settings.className);
 				$(result).find("div").eq(index % all).addClass(settings.className);
 			});
 
-			$(this).on("keyup keypress",
+			$(this).on("keyup",
 				function () {
 
 					if (search_field.val() === oldValue) {
@@ -132,18 +127,18 @@ Copyright (c) 2015-2042
 								return;
 							}
 							$(result).html(response).show();
+							index = 0;
 							all = $(result).find("div").length;
-							$("." + settings.className).removeClass(settings.className);
-
+							
 							$(result).find("div").eq(index).addClass(settings.className);
 							$(result).find("div").on("click",
 													 function () {
-									search_field.val($(this).find(settings.dataSelector).text());
+									search_field.val($(this).text());
 
 									if (settings.callback !== null) {
-										settings.callback($(this).find(settings.dataSelector).text(), search_field.parent());
+										settings.callback($(this).text(), search_field.parent());
 									}
-									if (settings.autohide) {$(result).hide(); }
+									$(result).hide();
 									$(result).empty();
 								});
 
@@ -177,14 +172,15 @@ Copyright (c) 2015-2042
 			});
 
 			$(clear).click(function () {
-				search_field.val(null).focus();
+				search_field.val(null);
+				
 				$(result).empty();
-				if (settings.autohide) {
-					$(result).hide();
-					if (settings.onclear !== null) {
-						settings.onclear($(search_field).parent());
-					}
+				$(result).hide();
+					
+				if (settings.onclear !== null) {
+					settings.onclear($(search_field).parent());
 				}
+				
 			});
 
 			$(clear).hover(function (event) {

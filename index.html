@@ -24,8 +24,8 @@
 		alert(a);
 		$(b).next(".autocomplete-wrapper").find("input").focus();
 		}
-		$(".search_field").autocomplete({callback: f,autohide: true,show_all:true, max_values: 5});
-		$(".search_field").autocomplete({callback: f,autohide: true,show_all:false, max_values: 5});
+		$(".search_field").eq(0).autocomplete({callback: f,show_all:true, max_values: 5});
+		$(".search_field").eq(1).autocomplete({callback: f,show_all:false, max_values: 5});
 		</script>
 	</body>
 </html>
