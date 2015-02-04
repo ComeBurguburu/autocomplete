@@ -5,7 +5,7 @@ Autocomplete result when use search bar from database utf-8 support
 
 $(selector).autocomplete();
 
-You can use options 
+You can use options :
 
 <table>
 <tr><th>Options </th><th>Value</th><th>Default</th></tr>
@@ -17,8 +17,9 @@ You can use options
 <tr><td>className</td><td>the class name when element is highlighted (without dot)</td><td> select-autocomplete <br/>(defined in style.autocomplete.css)</td></tr>
 <tr><td>max_values</td><td>the maximum number of result display<p>set to <code>null</code> to disable limit (can reduice performance</td><td>10</td></tr>
 <tr><td>no_result</td><td>text display when there are no result</td><td>no result</td></tr>
-<tr><td>key</td><td> an array of param</td><td>null</td>>/tr>
-<tr><td>value</td><td> an array of value<p>param1=value1&param2=value2...</p></td><td>null</td></tr></table>
+<tr><td>key</td><td> an array of param</td><td>null</td></tr>
+<tr><td>value</td><td> an array of value<p>param1=value1&param2=value2...</p></td><td>null</td></tr>
+</table>
 
 <u>example : </u>
 <pre>
