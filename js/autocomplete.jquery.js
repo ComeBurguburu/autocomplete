@@ -111,9 +111,15 @@ Copyright (c) 2015-2042
 			$(this).on("keyup",
 				function () {
 
+					if(search_field.val()===""){
+						$(result).hide();
+						return;
+					}
+					
 					if (search_field.val() === oldValue) {
 						return;
 					}
+					
 					
 					data[settings.param_name] = search_field.val();
 					oldValue = search_field.val();

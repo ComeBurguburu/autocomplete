@@ -16,16 +16,16 @@ function extension($file){
 }
 
 function mkmap($root,$find){
-	$cpt=0;
-	$max=isset($_REQUEST["max_values"])?$_REQUEST["max_values"]:null;
+	global $cpt,$max;
 
 	$folder = opendir ($root);
 if(LIKE($root,$find) || (isset($_REQUEST["show_all"]) && $_REQUEST["show_all"]==="true" && $find ==="")){
 	if (count(scandir($root)) <= 2){
 		echo "<div><img src=\"".("icon/folder.png")."\"/>".realpath($root)."\</div>";
 		$cpt++;
-		if($cpt===$max)
+		if($cpt==$max){
 			exit;
+		}
 }}
 
 while ($file = readdir ($folder)) {
@@ -40,7 +40,7 @@ while ($file = readdir ($folder)) {
 			if(LIKE($pathfile,$find) || (isset($_REQUEST["show_all"]) && $_REQUEST["show_all"]==="true" && $find==="")){
 				echo"<div>";
 
-				if(file_exists("icon/".extension($file).".png")){
+				if(file_exists("../icon/".extension($file).".png")){
 					echo "<img src=\"".("icon/".extension($file)).".png"."\"/>";
 				}
 				else{
@@ -50,8 +50,10 @@ while ($file = readdir ($folder)) {
 
 				echo realpath($pathfile)."</div>\n";
 				$cpt++;
-		if($cpt===$max)
+		if($cpt==$max){
+			//die($cpt);
 			exit;
+		}
 			}
 		}
 	} 
@@ -63,7 +65,8 @@ if(!isset($_REQUEST["path"])){
 	die("no param");
 }
 $find=$_REQUEST["path"];
-
+$cpt=0;
+	$max=isset($_REQUEST["max_values"])?$_REQUEST["max_values"]:null;
 $path="../..";
 mkmap($path,$find);
 ?>
