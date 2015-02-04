@@ -26,5 +26,5 @@ You can use options :
 var f = function(a,b){
 		alert(a);
 		}
-		$("#search_field").autocomplete({callback: f, autohide: true, className: "perso"});
+		$("#search_field").autocomplete({url: "php/search.php", callback: f, className: "perso"});
 		</pre>
