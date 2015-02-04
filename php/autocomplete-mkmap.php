@@ -23,7 +23,7 @@ if(LIKE($root,$find) || (isset($_REQUEST["show_all"]) && $_REQUEST["show_all"]==
 	if (count(scandir($root)) <= 2){
 		echo "<div><img src=\"".("icon/folder.png")."\"/>".realpath($root)."\</div>";
 		$cpt++;
-		if($cpt==$max){
+		if($cpt == $max){
 			exit;
 		}
 }}
@@ -36,7 +36,6 @@ while ($file = readdir ($folder)) {
 			mkmap($pathfile,$find); 
 		} 
 		else{
-			//die(print_r(Array("pathfil"=>$pathfile,"find"=>$find)));
 			if(LIKE($pathfile,$find) || (isset($_REQUEST["show_all"]) && $_REQUEST["show_all"]==="true" && $find==="")){
 				echo"<div>";
 
@@ -48,17 +47,16 @@ while ($file = readdir ($folder)) {
 				}
 
 
-				echo realpath($pathfile)."</div>\n";
+				echo $pathfile."</div>\n";
 				$cpt++;
-		if($cpt==$max){
-			//die($cpt);
-			exit;
-		}
+				
+				if($cpt==$max){
+					exit;
+				}
 			}
 		}
 	} 
 }
-//echo "dn";
 closedir ($folder);
 }
 if(!isset($_REQUEST["path"])){
@@ -66,7 +64,7 @@ if(!isset($_REQUEST["path"])){
 }
 $find=$_REQUEST["path"];
 $cpt=0;
-	$max=isset($_REQUEST["max_values"])?$_REQUEST["max_values"]:null;
+$max=isset($_REQUEST["max_values"])?$_REQUEST["max_values"]:null;
 $path="../..";
 mkmap($path,$find);
 ?>
