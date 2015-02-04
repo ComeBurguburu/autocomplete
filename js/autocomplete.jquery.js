@@ -27,7 +27,6 @@ Copyright (c) 2015-2042
 				return;
 			}
 
-			// This is the easiest way to have default options.
 			var settings = $.extend({
 				url: "php/search.php",
 				callback: null,
@@ -97,9 +96,7 @@ Copyright (c) 2015-2042
 						}
 					}
 
-					$(result).empty();
-					$(result).hide();
-					
+					$(result).empty().hide();
 					oldValue = search_field.val();
 				}
 
@@ -111,7 +108,7 @@ Copyright (c) 2015-2042
 			$(this).on("keyup",
 				function () {
 
-					if(search_field.val()===""){
+					if (search_field.val() === "") {
 						$(result).hide();
 						return;
 					}
@@ -129,10 +126,10 @@ Copyright (c) 2015-2042
 						data,
 						function (response) {
 							if (response === "" && search_field.val() !== "") {
-								$(result).html("<i>" + settings.no_result + "</li>").show();
+								$(result).html("<i>" + settings.no_result + "</i>").show();
 								return;
 							}
-							$(result).html(response).show();
+							$(result).show().html(response);
 							index = 0;
 							all = $(result).find("div").length;
 							
@@ -144,8 +141,7 @@ Copyright (c) 2015-2042
 									if (settings.callback !== null) {
 										settings.callback($(this).text(), search_field.parent());
 									}
-									$(result).hide();
-									$(result).empty();
+									$(result).hide().empty();
 								});
 
 							$(result).find("div").on("mouseout", null,
@@ -182,8 +178,7 @@ Copyright (c) 2015-2042
 			$(clear).click(function () {
 				search_field.val(null);
 				
-				$(result).empty();
-				$(result).hide();
+				$(result).empty().hide();
 					
 				if (settings.onclear !== null) {
 					settings.onclear($(search_field).parent());
