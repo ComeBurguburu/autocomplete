@@ -19,10 +19,10 @@
 		</div>
 		  <!-- JavaScript -->
 		<script type="text/javascript">
-		var f = function(a,b){
-		alert(a);
+		var f = function(val, parent,is_folder){
+			$("#content").parent().prepend($(document.createElement("a")).prop("href","../" + val).text(val));
 		}
-		$(".search_field").eq(0).autocomplete({url:"php/autocomplete-mkmap.php", param_name:"path",callback: f,show_all: false, max_values: 5});
+		$(".search_field").eq(0).autocomplete({url:"php/autocomplete-mkmap.php", param_name:"path",folder: true, callback: f,show_all: false, max_values: 5});
 		</script>
 	</body>
 </html>
